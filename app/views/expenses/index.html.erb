@@ -1,0 +1,32 @@
+<h1 class="text-center m-3">List of All Expenses</h1>
+
+<div class="container d-flex flex-row justify-content-between align-items-center p-2">
+  <%= link_to 'Create New Expense', new_expense_path, :class => "btn btn-success p-2" %>
+
+  <%total = 0 %>
+  <% @expenses.each do |expense| %>
+    <% total += expense.price%>
+  <% end %>
+  <h2 class="align-items-center"> Total: <%= total %> </h2>
+
+</div>
+
+<div class="container mt-3 card shadow p-2 mb-5 bg-white rounded"> <div class="card-body">
+  <table class="table table-hover">
+    <tr>
+      <th>Item</th>
+      <th>Price</th>
+      <th>Notes</th>
+    </tr>
+
+    <tbody>
+    <% @expenses.each do |expense| %>
+    <tr> 
+      <td> <%= link_to expense.item, expense, :class => "btn btn-secondary p-1" %> </td>
+      <td> <%= expense.price %> </td>
+      <td> <%= expense.notes.blank? ? '---' : expense.notes %> </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div> </div>
