@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ExpensesController < ApplicationController
   def index
     @expenses = Expense.all
@@ -41,11 +43,10 @@ class ExpensesController < ApplicationController
 
     redirect_to root_path, status: :see_other
   end
-  
 
   private
-    def expense_params
-      params.require(:expense).permit(:item, :price, :notes)
-    end
 
+  def expense_params
+    params.require(:expense).permit(:item, :price, :notes)
+  end
 end

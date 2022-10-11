@@ -1,31 +1,25 @@
 <h3 class="text-center m-1"> <%= link_to 'Back to Expenses', expenses_path, :class => "btn btn-primary" %> </h3>
-
-<div class="container mt-3 card shadow p-3 bg-white rounded"> 
-
+<div class="container mt-3 card shadow p-3 bg-white rounded" style="min-width: 300px; max-width: 30vw">
   <div class="card-body d-flex flex-column justify-content-center align-items-center">
     <%= form_with model: @expense do |form| %>
-      <div class="m-2">
+      <div class="m-2 mb-3">
         <%= form.text_field :item, placeholder: "Item" %>
         <% @expense.errors.full_messages_for(:item).each do |message| %>
           <div class="alert alert-danger m-1 p-1" role="alert"><%= message %></div>
         <% end %>
       </div>
-
-      <div class="m-2">
+      <div class="m-2 mb-3">
         <%= form.number_field :price, placeholder: "Price" %>
         <% @expense.errors.full_messages_for(:price).each do |message| %>
           <div class="alert alert-danger m-1 p-1" role="alert"><%= message %></div>
         <% end %>
       </div>
-
-      <div class="m-2">
+      <div class="m-2 mb-3">
         <%= form.text_field :notes, placeholder: "Notes (Optional)" %>
       </div>
-
-
       <div class="m-2 d-flex justify-content-center align-items-center">
         <%= form.submit %>
       </div>
-
     <% end %>
-</div></div>
+  </div>
+</div>
